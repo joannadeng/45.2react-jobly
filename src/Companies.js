@@ -3,6 +3,7 @@ import {useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import JoblyApi from "./JoblyAPI";
 import CurrentUserContext from "./CurrentUserContext";
+import './Companies.css'
 
 
 function Companies() {
@@ -32,10 +33,10 @@ function Companies() {
     return (
         <>
         { companies.map((com,key) => ( 
-              <div  key={key} onClick={()=>{
+              <div  className="Companies" key={key} onClick={()=>{
                 navigate(`/companies/${com.handle}`)
               }}>
-                <h6>{com.name}</h6>
+                <h3>{com.name}</h3>
                 <p>{com.description}</p>
               </div >
         )) }

@@ -1,8 +1,7 @@
-import React,{ useContext, useState} from 'react';
-import { useFormik } from "formik";
+import React,{ useContext} from 'react';
 import CurrentUserContext from "./CurrentUserContext";
 import JoblyApi from './JoblyAPI';
-import { useNavigate } from 'react-router-dom';
+import './ProfileForm.css'
   
 
 async function updateUserInfo(username,data) {
@@ -12,24 +11,16 @@ async function updateUserInfo(username,data) {
 
 const ProfileForm = ({setCurrentUser}) => {
     const currentUser = useContext(CurrentUserContext);
-    const navigate = useNavigate();
-    const initialValues = {
-        // username:currentUser.username,
-        firstName:currentUser.firstName,
-        lastName:currentUser.lastName,
-        email:currentUser.email
-    }
-    const [formData,setFormData] = useState(initialValues)
-       
     const handleSubmit = (e) => {
         e.preventDefault();
-        const {firstName,lastName,email} = formData;
+        const {firstName,lastName,email} = currentUser;
         let updatedProfileData = {firstName,lastName,email};
         try{
            let updatedUser = updateUserInfo(currentUser.username,updatedProfileData);
-           setCurrentUser(currentUser => ({...currentUser,...updatedUser}));
+          setCurrentUser(updatedUser);
+          console.log(currentUser)
            alert("Successfully Updated");
-           navigate('/');
+          //  navigate('/');
         }catch(err){
             console.log(err)
         }
@@ -37,7 +28,7 @@ const ProfileForm = ({setCurrentUser}) => {
 
     const handleChange = (e) => {
         const {name,value} = e.target;
-        setFormData(data => ({
+        setCurrentUser(data => ({
             ...data,
             [name]:value
         }))
@@ -45,49 +36,50 @@ const ProfileForm = ({setCurrentUser}) => {
     
 
     return (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username">Username</label>
+        <form className="ProfileForm" onSubmit={handleSubmit}>
+          <label className="ProfileForm-label" htmlFor="username">Username</label>
           <input
+            className='ProfileForm-input'
             id="username"
             name="username"
             type="text"
-            // onChange={handleChange}
-            readonly="readonly"
+            readOnly="readonly"
             value={currentUser.username}
           />
          
 
-          <label htmlFor="firstName">First Name</label>
+          <label className="ProfileForm-label" htmlFor="firstName">First Name</label>
           <input
+            className='ProfileForm-input'
             id="firstName"
             name="firstName"
             type="text"
             onChange={handleChange}
-            value={formData.firstName}
+            value={currentUser.firstName}
           />
     
-          <label htmlFor="lastName">Last Name</label>
+          <label className="ProfileForm-label" htmlFor="lastName">Last Name</label>
           <input
+            className='ProfileForm-input'
             id="lastName"
             name="lastName"
             type="text"
             onChange={handleChange}
-            value={formData.lastName}
+            value={currentUser.lastName}
           />
          
-          <label htmlFor="email">Email</label>
+          <label className="ProfileForm-label" htmlFor="email">Email</label>
           <input
+            className='ProfileForm-input'
             id="email"
             name="email"
             type="email"
             onChange={handleChange}
-            value={formData.email}
+            value={currentUser.email}
           />
-    
-          <button >Save</button>
+          <button className='ProfileForm-btn' >Save</button>
         </form>
       );
-
 }
 
 export default ProfileForm;

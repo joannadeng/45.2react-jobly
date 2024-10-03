@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import JoblyApi from "./JoblyAPI";
 import CurrentUserContext from "./CurrentUserContext";
 import JobDetail from "./JobDetail";
+import './Jobs.css'
 
 function Jobs() {
     const initialValues = {
@@ -63,7 +64,8 @@ function Jobs() {
     return (
         <>
         
-        <div>
+        <div className="jobs">
+            <div className="jobs-form">
             <form onSubmit={handleSubmit}>
                <input
                    type="text"
@@ -74,9 +76,9 @@ function Jobs() {
                /> 
                <button>Search</button>
             </form>
-            
+            </div>
             {jobs.map((job,idx) => (
-                <JobDetail key={idx} job={job} handle={job.companyHandle}/>
+                <div className="jobs-detail"><JobDetail key={idx} job={job} handle={job.companyHandle}/></div>
             ))}
         </div>
         </>

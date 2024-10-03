@@ -1,0 +1,35 @@
+.signupform {
+    display:grid;
+    width: 40px;
+    size: 50;
+    place-items: center;
+    min-height: 20vh;
+    margin-left: 35vw;
+    font-size: 1rem;
+}
+
+ .signupform-input {
+    height:25px;
+    width:35vw;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+ .signupform-label {
+    font-size: 1.3rem;
+    font-weight:bold
+}
+
+.signupform-btn {
+    margin:12px;
+    width: 10vw;
+    border-radius: 10%;
+    font-size: 1rem;
+}
+
+ .signupform-btn:hover{
+    background-color: lightblue;
+    color: blue;
+    font-weight: bold;
+    font-size:1.2rem;
+}

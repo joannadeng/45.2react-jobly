@@ -24,29 +24,29 @@ function App() {
   
   async function login (data) {
     let res = await JoblyApi.login(data); //return token
-    const value = JSON.stringify(res.token);
-    setToken(value);
+    // const value = JSON.stringify(res.token);
+    setToken(res.token);
   }
 
   async function signup(data) {
     let res = await JoblyApi.signup(data); 
-    const value = JSON.stringify(res.token);
-    setToken(value);
+    // const value = JSON.stringify(res.token);
+    setToken(res.token);
   }
 
   useEffect(() => {
     async function getCurrentUser() {
       if(token){
       let user = jwtDecode(token);
-      setCurrentUser(user);
       try{
         let res = await JoblyApi.getUser(user.username)
+        setCurrentUser(res);
         console.log(res)
       }catch(e){
         console.log(e)
       }
       };
-    }
+    };
     getCurrentUser();
   },[token])
 
@@ -58,7 +58,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" >
       <BrowserRouter>
       <CurrentUserContext.Provider value={currentUser}>
         <NavBar logout={logout}/>

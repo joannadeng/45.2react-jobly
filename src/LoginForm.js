@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from 'formik';
 import { useNavigate } from "react-router-dom";
+import './LoginForm.css'
 
 const validate = values => {
     const errors = {};
@@ -29,9 +30,10 @@ const LoginForm = ({login}) => {
     });
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="username">Username</label>
+        <form className="loginform" onSubmit={formik.handleSubmit}>
+            <label className="loginform-label" htmlFor="username">Username</label>
             <input
+            className="loginform-input"
             id="username"
             name="username"
             type="text"
@@ -40,8 +42,9 @@ const LoginForm = ({login}) => {
             />
           {formik.errors.username ? <div>{formik.errors.username}</div> : null}
 
-            <label htmlFor="password">Password</label>
+            <label className="loginform-label" htmlFor="password">Password</label>
             <input
+            className="loginform-input"
             id="password"
             name="password"
             type="password"
@@ -49,7 +52,7 @@ const LoginForm = ({login}) => {
             value={formik.values.password}
             />
           {formik.errors.password ? <div>{formik.errors.password}</div> : null}
-          <button>Submit</button>
+          <button className="loginform-btn">Submit</button>
         </form>
     )
 }

@@ -41,7 +41,7 @@ function JobDetail({job,handle}) {
         <>
          <div>
             <h3>{job.title}</h3>
-            <h4>{company.name}</h4>
+            <h3>{company.name}</h3>
             <p>Salary: {job.salary}</p>
             <p>Equity: {job.equity}</p>
             <form>

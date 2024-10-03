@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from "formik";
+import './SignupForm.css'
 
 const validate = values => {
     const errors = {} ;
@@ -44,9 +45,10 @@ const SignupForm = ({signup}) => {
     });
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-          <label htmlFor="username">Username</label>
+        <form className="signupform" onSubmit={formik.handleSubmit}>
+          <label className="signupform-label" htmlFor="username">Username</label>
           <input
+            className='signupform-input'
             id="username"
             name="username"
             type="text"
@@ -55,8 +57,9 @@ const SignupForm = ({signup}) => {
           />
           {formik.errors.username ? <div>{formik.errors.username}</div> : null}
 
-          <label htmlFor="password">Password</label>
+          <label className="signupform-label" htmlFor="password">Password</label>
           <input
+            className='signupform-input'
             id="password"
             name="password"
             type="password"
@@ -66,8 +69,9 @@ const SignupForm = ({signup}) => {
           {formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
 
-          <label htmlFor="firstName">First Name</label>
+          <label className="signupform-label" htmlFor="firstName">First Name</label>
           <input
+            className='signupform-input'
             id="firstName"
             name="firstName"
             type="text"
@@ -76,8 +80,9 @@ const SignupForm = ({signup}) => {
           />
           {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
     
-          <label htmlFor="lastName">Last Name</label>
+          <label className="signupform-label" htmlFor="lastName">Last Name</label>
           <input
+            className='signupform-input'
             id="lastName"
             name="lastName"
             type="text"
@@ -86,8 +91,9 @@ const SignupForm = ({signup}) => {
           />
           {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
     
-          <label htmlFor="email">Email</label>
+          <label className="signupform-label" htmlFor="email">Email</label>
           <input
+            className='signupform-input'
             id="email"
             name="email"
             type="email"
@@ -96,7 +102,7 @@ const SignupForm = ({signup}) => {
           />
           {formik.errors.email ? <div>{formik.errors.email}</div> : null}
     
-          <button type="submit">Submit</button>
+          <button className="signupform-btn" type="submit">Submit</button>
         </form>
       );
 

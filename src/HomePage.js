@@ -1,21 +1,22 @@
 import React, {useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "./CurrentUserContext";
+import './HomePage.css'
 
 function HomePage() {
     const navigate = useNavigate()
     const currentUser = useContext(CurrentUserContext);
     if(currentUser) {
         return (
-            <div>
+          <div className="HomePage">
             <h1>Jobly</h1>
             <p>All the jobs in one convenient place</p>
             <h2>Welcome back, {currentUser.username}!</h2>
-        </div>
+          </div>
         )
     }
     return (
-        <div>
+        <div className="HomePage">
             <h1>Jobly</h1>
             <p>All the jobs in one convenient place</p>
             <button onClick={() => navigate('login')}>Log in</button> 

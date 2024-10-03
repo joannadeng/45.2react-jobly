@@ -5,6 +5,7 @@ import JobDetail from "./JobDetail";
 import { useNavigate } from "react-router-dom";
 import CurrentUserContext from "./CurrentUserContext";
 import { useContext } from "react";
+import './CompanyDetail.css'
 
 function CompanyDetail() {
     const [company, setCompany] = useState('');
@@ -31,11 +32,12 @@ function CompanyDetail() {
     },[currentUser,handle])
 
     return (
-        <div>
+        <div className="CompanyDetail">
             <h3>{company.name}</h3>
             <p>{company.description}</p>
             {company.jobs?.map((job,idx) => (
-                <JobDetail key={idx} job={job} handle={company.handle}/>
+                <div className="CompanyDetail-job"><JobDetail key={idx} job={job} handle={company.handle}/></div>
+                // <JobDetail key={idx} job={job} handle={company.handle}/>
             ))}
         </div>
     )

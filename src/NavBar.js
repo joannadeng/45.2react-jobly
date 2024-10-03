@@ -1,45 +1,53 @@
 import React,{ useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem} from "reactstrap";
 import CurrentUserContext from "./CurrentUserContext";
+import './NavBar.css'
 
 function NavBar({logout}) {
     const currentUser = useContext(CurrentUserContext);
-    // const navigate = useNavigate();
     if(currentUser){
         return (
-            <div>
-            <Navbar>
-                <NavLink to="/">
-                    Jobly
-                </NavLink>
-
-                <Nav>
-                    <NavItem>
-                        <NavLink to="/companies">Companies  </NavLink>
-                        <NavLink to="/jobs">Jobs  </NavLink>
-                        <NavLink to="/profile">Profile  </NavLink>  
-                        <NavLink to="/" onClick={logout}>LogOut {currentUser.username}  </NavLink> 
-                    </NavItem>
-                </Nav>
-            </Navbar>
+        <div className="NavBar">
+            <div className="NavBar-Jobly">
+               <Navbar >
+                <NavLink  to="/">Jobly</NavLink>
+               </Navbar> 
+            </div>
+            
+            <div className="link-right">
+                <Navbar >
+                  {/* <Nav > */}
+                    <ul>
+                        <li><NavLink to="companies">Companies</NavLink></li>
+                        <li><NavLink to="jobs">Jobs</NavLink></li>
+                        <li><NavLink to="profile">Profile</NavLink></li>
+                        <li><NavLink to="/" onClick={logout}>LogOut {currentUser.username}</NavLink></li>
+                    </ul>
+                  {/* </Nav> */}
+                </Navbar>
+            </div>
         </div>
         )
     }
     return (
         <div>
-            <Navbar>
-                <NavLink to="/">
-                    Jobly
-                </NavLink>
-
-                <Nav>
-                    <NavItem>
-                        <NavLink to="/login">Login </NavLink>
-                        <NavLink to="/signup">SignUp</NavLink>
-                    </NavItem>
-                </Nav>
-            </Navbar>
+            <div className="NavBar-Jobly">
+                <Navbar >
+                   <NavLink  to="/">Jobly</NavLink>
+                </Navbar>
+            </div>
+            <div className="link-right">
+              <Navbar >
+                {/* <Nav > */}
+                    <ul>
+                        <li><NavLink to="/login"> Login  </NavLink></li>
+                        <li><NavLink to="/signup"> SignUp </NavLink></li>
+                    </ul>
+                {/* </Nav> */}
+              </Navbar>
+            </div>
+               
         </div>
     );
 }

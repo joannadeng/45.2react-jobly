@@ -1,0 +1,58 @@
+ .NavBar {
+    align-items:center;
+    display:flex;
+    flex-wrap: inherit;
+    justify-content: space-between;
+    width:100vw;
+    vertical-align:text-top;
+    height:20vh;
+    /* position:fixed; */
+    /* top:0; */
+}
+
+
+.NavBar-Jobly {
+    /* margin-left:1.5vw; */
+    padding-bottom: 0.3125rem;
+    padding-top:0.3125rem;
+    display: inline-block;
+    font-size:1.5rem;
+    text-align: center;
+    width: 50vw;
+    
+} 
+
+.link-right{
+    /* margin-right: 1.5vw; */
+    padding-bottom: 0.3125rem;
+    padding-top:0.3125rem;
+    display: inline-block;
+    font-size:1.5rem;
+    width:50vw;
+} 
+
+ul {
+    list-style-type: none;
+   
+  }
+
+a {
+     text-decoration: none;
+}
+
+li :hover{
+   color:black;
+   cursor:pointer;
+   font-weight: bold;
+}
+
+.NavBar-Jobly{
+    color:black;
+    cursor:pointer;
+    /* font-weight: bold; */
+}
+
+
+
+
+

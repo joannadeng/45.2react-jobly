@@ -21,7 +21,7 @@ class JoblyApi {
     //there are multiple ways to pass an authorization token, this is how you pass it in the header.
     //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${JoblyApi.token}` };
+    const headers = { Authorization: `Bearer ${ window.localStorage.getItem('token')}` };
     const params = (method === "get")
         ? data
         : {};
@@ -80,7 +80,9 @@ class JoblyApi {
 
   static async getCompanies() {
     let res = await this.request('companies');
+    console.log(JoblyApi.token)
     return res.companies;
+    
   }
 
   /** Create a company */
